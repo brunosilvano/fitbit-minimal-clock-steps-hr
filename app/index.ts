@@ -3,7 +3,8 @@ import document from "document";
 import { preferences } from "user-settings";
 import { formatHours, zeroPad } from '../common/utils';
 
-const myLabel = document.getElementById('myLabel');
+// Get references to UI elements
+const clockUIElement = document.getElementById("clockText");
 
 // Clock settings
 clock.granularity = "minutes";
@@ -18,6 +19,6 @@ clock.ontick = ev => {
   let formattedTime = `${formatHours(hours, preferences.clockDisplay)}:${zeroPad(minutes)}`;
 
   // Update value of text
-  myLabel.text = formattedTime;
+  clockUIElement.text = formattedTime;
 }
 
