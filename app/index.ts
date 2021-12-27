@@ -1,7 +1,7 @@
 import clock from "clock";
 import document from "document";
 import { preferences } from "user-settings";
-import { formatHours, zeroPad } from '../common/utils';
+import { formatHours, zeroPad } from "../common/utils";
 
 // Get references to UI elements
 const clockUIElement = document.getElementById("clockText");
