@@ -1,4 +1,4 @@
-<svg id="background">
+<svg id="viewport">
   <text id="clockText" />
   <text id="heartRateText">--</text>
   <text id="stepsText">--</text>

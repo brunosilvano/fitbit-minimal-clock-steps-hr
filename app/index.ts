@@ -25,7 +25,7 @@ const sensors: ISensors = {};   // holds used sensors references - TODO: improve
 let timerId: number = 0;
 
 // Get references to UI elements
-const backgroundElement = document.getElementById("background");
+const viewportElement = document.getElementById("viewport");
 const clockUIElement = document.getElementById("clockText");
 const heartRateUIElement = document.getElementById("heartRateText");
 const stepsUIElement = document.getElementById("stepsText");
@@ -82,8 +82,8 @@ if (HeartRateSensor) {
 
     // Change background color based on heart-rate zone
     const heartRateZone = user.heartRateZone(hr);
-    if (heartRateZone === "fat-burn" && backgroundElement.class !== "yellow") backgroundElement.class = "yellow";   // TODO: improve toggling of classes - make it more generic instead of always setting it to an empty string
-    else if (heartRateZone !== "fat-burn" && backgroundElement.class === "yellow") backgroundElement.class = "";
+    if (heartRateZone === "fat-burn" && viewportElement.class !== "yellow") viewportElement.class = "yellow";   // TODO: improve toggling of classes - make it more generic instead of always setting it to an empty string
+    else if (heartRateZone !== "fat-burn" && viewportElement.class === "yellow") viewportElement.class = "";
   });
   sensors.hrm.start();
 }

@@ -31,12 +31,12 @@
   fill: white;
 }
 
-#background {
+#viewport {
   width: 100%;
   height: 100%;
   viewport-fill: black;
 }
 
-#background.yellow {
+#viewport.yellow {
   viewport-fill: fb-peach;
 }
