@@ -7,6 +7,7 @@ import { preferences } from "user-settings";
 
 // Modules that require permission
 import { today } from "user-activity";
+import { user } from "user-profile";
 
 // Sensor modules
 import { HeartRateSensor } from "heart-rate";     // requires permission
@@ -24,6 +25,7 @@ const sensors: ISensors = {};   // holds used sensors references
 let timerId: number = 0;
 
 // Get references to UI elements
+const backgroundElement = document.getElementById("background");
 const clockUIElement = document.getElementById("clockText");
 const heartRateUIElement = document.getElementById("heartRateText");
 const stepsUIElement = document.getElementById("stepsText");
@@ -74,7 +76,14 @@ clock.ontick = ev => {
 if (HeartRateSensor) {
   sensors.hrm = new HeartRateSensor();
   sensors.hrm.addEventListener("reading", () => {
-    heartRateUIElement.text = sensors.hrm.heartRate.toString();
+    // Update heart-rate display
+    const hr = sensors.hrm.heartRate;
+    heartRateUIElement.text = hr.toString();
+
+    // Change background color based on heart-rate zone
+    const heartRateZone = user.heartRateZone(hr);
+    if (heartRateZone === "fat-burn" && backgroundElement.class !== "yellow") backgroundElement.class = "yellow";
+    else if (heartRateZone !== "fat-burn" && backgroundElement.class === "yellow") backgroundElement.class = "";
   });
   sensors.hrm.start();
 }
