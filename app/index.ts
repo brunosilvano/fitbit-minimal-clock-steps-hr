@@ -21,7 +21,7 @@ interface ISensors {
 }
 
 // Globals
-const sensors: ISensors = {};   // holds used sensors references
+const sensors: ISensors = {};   // holds used sensors references - TODO: improve references to sensors: maybe an array is easier to iterate through?
 let timerId: number = 0;
 
 // Get references to UI elements
@@ -82,7 +82,7 @@ if (HeartRateSensor) {
 
     // Change background color based on heart-rate zone
     const heartRateZone = user.heartRateZone(hr);
-    if (heartRateZone === "fat-burn" && backgroundElement.class !== "yellow") backgroundElement.class = "yellow";
+    if (heartRateZone === "fat-burn" && backgroundElement.class !== "yellow") backgroundElement.class = "yellow";   // TODO: improve toggling of classes - make it more generic instead of always setting it to an empty string
     else if (heartRateZone !== "fat-burn" && backgroundElement.class === "yellow") backgroundElement.class = "";
   });
   sensors.hrm.start();
