@@ -12,7 +12,6 @@
 #heartRateText {
   font-size: 32;
   text-length: 4;
-  text-buffer: "--";
   font-family: System-Regular;
   font-weight: regular;
   text-anchor: middle;
@@ -24,7 +23,6 @@
 #stepsText {
   font-size: 32;
   text-length: 8;
-  text-buffer: "--";
   font-family: System-Regular;
   font-weight: regular;
   text-anchor: middle;
