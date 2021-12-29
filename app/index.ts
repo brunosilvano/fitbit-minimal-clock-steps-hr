@@ -14,11 +14,37 @@ interface ISensors {
 
 // Globals
 const sensors: ISensors = {};   // holds used sensors references
+let timerId: number = 0;
 
 // Get references to UI elements
 const clockUIElement = document.getElementById("clockText");
 const heartRateUIElement = document.getElementById("heartRateText");
 const stepsUIElement = document.getElementById("stepsText");
+
+//// Helper
+function refreshStats() {
+  // Steps
+  if (appbit.permissions.granted("access_activity")) {
+    const steps = today.adjusted.steps;
+    if (steps !== undefined) {
+      stepsUIElement.text = steps.toString();
+    }
+  }
+}
+
+function startTimer() {
+  stopTimer();
+  if (timerId === 0) {
+    timerId = setInterval(refreshStats, 1500);   // refresh stats every 1500 ms
+  }
+}
+
+function stopTimer() {
+  if (timerId !== 0) {
+    clearInterval(timerId);
+    timerId = 0;
+  }
+}
 
 //// Clock
 // Clock settings
@@ -46,21 +72,17 @@ if (HeartRateSensor) {
   sensors.hrm.start();
 }
 
-//// Steps
-if (appbit.permissions.granted("access_activity")) {
-  const steps = today.adjusted.steps;
-  if (steps !== undefined) {
-    stepsUIElement.text = steps.toString();
-  }
-}
-
 //// Display
 display.addEventListener("change", () => {
   if (display.on) {
     // Start sensors
     if (sensors.hrm) sensors.hrm.start();
+    startTimer();
   } else {
     // Stop sensors
     if (sensors.hrm) sensors.hrm.stop();
+    stopTimer();
   }
 });
+
+startTimer();   // start refreshing the stats
