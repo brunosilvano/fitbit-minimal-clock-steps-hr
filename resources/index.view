@@ -1,4 +1,5 @@
 <svg class="background">
   <text id="clockText" />
   <text id="heartRateText" />
+  <text id="stepsText" />
 </svg>

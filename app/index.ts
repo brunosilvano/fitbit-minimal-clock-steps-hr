@@ -1,5 +1,7 @@
 import clock from "clock";
 import { display } from "display";
+import { me as appbit } from "appbit";
+import { today } from "user-activity";
 import { HeartRateSensor } from "heart-rate";
 import document from "document";
 import { preferences } from "user-settings";
@@ -16,6 +18,7 @@ const sensors: ISensors = {};   // holds used sensors references
 // Get references to UI elements
 const clockUIElement = document.getElementById("clockText");
 const heartRateUIElement = document.getElementById("heartRateText");
+const stepsUIElement = document.getElementById("stepsText");
 
 //// Clock
 // Clock settings
@@ -41,6 +44,14 @@ if (HeartRateSensor) {
     heartRateUIElement.text = sensors.hrm.heartRate.toString();
   });
   sensors.hrm.start();
+}
+
+//// Steps
+if (appbit.permissions.granted("access_activity")) {
+  const steps = today.adjusted.steps;
+  if (steps !== undefined) {
+    stepsUIElement.text = steps.toString();
+  }
 }
 
 //// Display
