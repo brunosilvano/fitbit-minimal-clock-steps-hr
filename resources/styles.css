@@ -1,11 +1,11 @@
 #clockText {
-  font-size: 64;
+  font-size: 128;
   text-length: 8;
   font-family: System-Regular;
   font-weight: regular;
   text-anchor: middle;
   x: 50%;
-  y: 50%+32;
+  y: 50%+64;
   fill: white;
 }
 
