@@ -1,3 +1,15 @@
+/* Viewport - root SVG element: all other visual elements will be inside this one */
+#viewport {
+  width: 100%;
+  height: 100%;
+  viewport-fill: black;
+}
+
+#viewport.yellow {
+  viewport-fill: fb-peach;
+}
+
+/* UI Text elements */
 #clockText {
   font-size: 128;
   text-length: 8;
@@ -29,14 +41,4 @@
   x: 30%;
   y: 100%-16;
   fill: white;
-}
-
-#viewport {
-  width: 100%;
-  height: 100%;
-  viewport-fill: black;
-}
-
-#viewport.yellow {
-  viewport-fill: fb-peach;
 }
