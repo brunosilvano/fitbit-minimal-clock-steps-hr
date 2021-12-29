@@ -1,10 +1,17 @@
+// Fitbit standard modules
+import { me as appbit } from "appbit";
 import clock from "clock";
 import { display } from "display";
-import { me as appbit } from "appbit";
-import { today } from "user-activity";
-import { HeartRateSensor } from "heart-rate";
 import document from "document";
 import { preferences } from "user-settings";
+
+// Modules that require permission
+import { today } from "user-activity";
+
+// Sensor modules
+import { HeartRateSensor } from "heart-rate";     // requires permission
+
+// Custom modules
 import { formatHours, zeroPad } from "../common/utils";
 
 // Interface for holding multiple sensors references
