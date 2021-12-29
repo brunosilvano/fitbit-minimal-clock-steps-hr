@@ -1,8 +1,17 @@
 import clock from "clock";
+import { display } from "display";
 import { HeartRateSensor } from "heart-rate";
 import document from "document";
 import { preferences } from "user-settings";
 import { formatHours, zeroPad } from "../common/utils";
+
+// Interface for holding multiple sensors references
+interface ISensors {
+  hrm?: HeartRateSensor,
+}
+
+// Globals
+const sensors: ISensors = {};   // holds used sensors references
 
 // Get references to UI elements
 const clockUIElement = document.getElementById("clockText");
@@ -27,9 +36,20 @@ clock.ontick = ev => {
 
 //// Heart-rate
 if (HeartRateSensor) {
-  const hrm = new HeartRateSensor();
-  hrm.addEventListener("reading", () => {
-    heartRateUIElement.text = hrm.heartRate.toString();
+  sensors.hrm = new HeartRateSensor();
+  sensors.hrm.addEventListener("reading", () => {
+    heartRateUIElement.text = sensors.hrm.heartRate.toString();
   });
-  hrm.start();
+  sensors.hrm.start();
 }
+
+//// Display
+display.addEventListener("change", () => {
+  if (display.on) {
+    // Start sensors
+    if (sensors.hrm) sensors.hrm.start();
+  } else {
+    // Stop sensors
+    if (sensors.hrm) sensors.hrm.stop();
+  }
+});
