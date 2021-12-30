@@ -82,8 +82,10 @@ if (HeartRateSensor) {
 
     // Change background color based on heart-rate zone
     const heartRateZone = user.heartRateZone(hr);
-    if (heartRateZone === "fat-burn" && viewportElement.class !== "yellow") viewportElement.class = "yellow";   // TODO: improve toggling of classes - make it more generic instead of always setting it to an empty string
-    else if (heartRateZone !== "fat-burn" && viewportElement.class === "yellow") viewportElement.class = "";
+    if ((heartRateZone === "out-of-range" || heartRateZone === "below-custom") && viewportElement.class !== "") viewportElement.class = "";
+    else if (heartRateZone === "fat-burn" && viewportElement.class !== "yellow") viewportElement.class = "yellow";   // TODO: improve toggling of classes - make it more generic instead of always setting it to an empty string
+    else if ((heartRateZone === "cardio" || heartRateZone === "custom") && viewportElement.class !== "orange") viewportElement.class = "orange";
+    else if ((heartRateZone === "peak" || heartRateZone === "above-custom") && viewportElement.class !== "red") viewportElement.class = "red";
   });
   sensors.hrm.start();
 }

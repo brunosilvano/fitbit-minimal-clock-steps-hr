@@ -9,6 +9,14 @@
   viewport-fill: fb-peach;
 }
 
+#viewport.orange {
+  viewport-fill: fb-orange;
+}
+
+#viewport.red {
+  viewport-fill: fb-red;
+}
+
 /* UI Text elements */
 #clockText {
   font-size: 128;
