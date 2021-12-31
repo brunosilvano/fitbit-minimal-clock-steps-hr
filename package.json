@@ -2,7 +2,7 @@
   "name": "minimal-clock-steps-hr",
   "version": "0.1.0",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
     "@fitbit/sdk": "~6.0.2",
     "@fitbit/sdk-cli": "^1.7.3",
