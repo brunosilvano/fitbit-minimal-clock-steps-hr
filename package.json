@@ -1,5 +1,5 @@
 {
-  "name": "my-first-clock",
+  "name": "minimal-clock-steps-hr",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -11,7 +11,7 @@
   "fitbit": {
     "appUUID": "ce29bb19-cd68-4717-9906-c8cb68988608",
     "appType": "clockface",
-    "appDisplayName": "My First Clock",
+    "appDisplayName": "Minimal - Steps/HR",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
     "requestedPermissions": [
