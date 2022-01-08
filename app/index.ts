@@ -26,6 +26,7 @@ let timerId = 0;
 
 // Get references to UI elements
 const viewportElement = document.getElementById("viewport");
+const dateUIElement = document.getElementById("dateText");
 const clockUIElement = document.getElementById("clockText");
 const heartRateUIElement = document.getElementById("heartRateText");
 const stepsUIElement = document.getElementById("stepsText");
@@ -65,11 +66,17 @@ clock.ontick = ev => {
   const hours = today.getHours();
   const minutes = today.getMinutes();
 
-  // Format display time
+  // Get date values
+  const monthDay = today.getDate();
+  const weekDay = today.toString().split(" ")[0];   // FIXME: add localization: https://dev.fitbit.com/build/guides/localization/
+
+  // Formatted strings
   const formattedTime = `${formatHours(hours, preferences.clockDisplay)}:${zeroPad(minutes)}`;
+  const formattedDate = `${weekDay} ${monthDay}`;
 
   // Update value of text
   clockUIElement.text = formattedTime;
+  dateUIElement.text = formattedDate;
 };
 
 //// Heart-rate

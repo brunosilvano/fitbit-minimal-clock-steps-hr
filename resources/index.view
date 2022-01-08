@@ -1,4 +1,5 @@
 <svg id="viewport">
+  <text id="dateText" />
   <text id="clockText" />
   <text id="heartRateText">--</text>
   <text id="stepsText">--</text>
