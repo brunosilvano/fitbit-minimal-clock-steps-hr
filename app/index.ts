@@ -103,4 +103,5 @@ display.addEventListener("change", () => {
   }
 });
 
+refreshStats(); // update stats on init to avoid showing empty fields
 startTimer();   // start refreshing the stats
