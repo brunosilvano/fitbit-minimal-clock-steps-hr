@@ -33,8 +33,16 @@ describe("formatHours", () => {
   });
 });
 
-    test("should format 24 to 0", () => {
-      expect(formatHours(3, "12h")).toBe("3");
-    });
+// zeroPad
+describe("zeroPad", () => {
+  test("should add 0 padding to numbers below 10", () => {
+    expect(zeroPad(0)).toBe("00");
+    expect(zeroPad(1)).toBe("01");
+  });
+
+  test("should NOT add 0 padding to numbers above 10", () => {
+    expect(zeroPad(10)).toBe("10");
+    expect(zeroPad(20)).toBe("20");
+    expect(zeroPad(100)).toBe("100");
   });
 });
