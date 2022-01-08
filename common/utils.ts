@@ -9,7 +9,7 @@ export function formatHours(hours: number, clockDisplay: "12h" | "24h"): string 
 
   if (clockDisplay === "12h") {
     // 12h format
-    formatedHours = (hours % 12).toString() || "12";
+    formatedHours = (hours % 12 || 12).toString();
   } else {
     // 24h format
     formatedHours = zeroPad(hours);

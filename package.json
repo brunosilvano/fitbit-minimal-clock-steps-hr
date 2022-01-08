@@ -6,7 +6,11 @@
   "devDependencies": {
     "@fitbit/sdk": "~6.0.2",
     "@fitbit/sdk-cli": "^1.7.3",
-    "fitbit-sdk-types": "^7.0.4"
+    "@types/jest": "^27.4.0",
+    "fitbit-sdk-types": "^7.0.4",
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
   },
   "fitbit": {
     "appUUID": "ce29bb19-cd68-4717-9906-c8cb68988608",
@@ -27,6 +31,37 @@
   },
   "scripts": {
     "build": "fitbit-build",
-    "debug": "fitbit"
+    "debug": "fitbit",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tests/tsconfig.json"
+      }
+    },
+    "roots": [
+      "<rootDir>/app",
+      "<rootDir>/common",
+      "<rootDir>/tests"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "((\\.|/)(test|spec))\\.tsx?$",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "app/*.ts",
+      "common/*.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
