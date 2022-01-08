@@ -15,5 +15,5 @@ export function formatHours(hours: number, clockDisplay: "12h" | "24h"): string 
     formatedHours = zeroPad(hours);
   }
 
-  return formatedHours
+  return formatedHours;
 }

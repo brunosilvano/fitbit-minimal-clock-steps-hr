@@ -22,7 +22,7 @@ interface ISensors {
 
 // Globals
 const sensors: ISensors = {};   // holds used sensors references - TODO: improve references to sensors: maybe an array is easier to iterate through?
-let timerId: number = 0;
+let timerId = 0;
 
 // Get references to UI elements
 const viewportElement = document.getElementById("viewport");
@@ -61,16 +61,16 @@ clock.granularity = "minutes";
 
 clock.ontick = ev => {
   // Get clock values
-  let today = ev.date;
-  let hours = today.getHours();
-  let minutes = today.getMinutes();
+  const today = ev.date;
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
 
   // Format display time
-  let formattedTime = `${formatHours(hours, preferences.clockDisplay)}:${zeroPad(minutes)}`;
+  const formattedTime = `${formatHours(hours, preferences.clockDisplay)}:${zeroPad(minutes)}`;
 
   // Update value of text
   clockUIElement.text = formattedTime;
-}
+};
 
 //// Heart-rate
 if (HeartRateSensor) {
