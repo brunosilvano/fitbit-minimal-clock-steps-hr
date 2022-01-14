@@ -5,7 +5,7 @@ A digital clock face with Steps and Heart-rate display. Made for the [Fitbit Sen
 <img src="screenshots/Screenshot1.png" />
 
 ## Features
-The clock face that displays:
+The clock face displays:
 - Day of the Month and day of the Week
 - Time
 - Current Steps count
